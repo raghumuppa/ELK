@@ -1,8 +1,10 @@
-### Run Elasticsearch & Kibana as docker containers
+### For creating Elasticsearch & Kibana as docker containers
+Set the sysctl parameter before creating the containers
 ```
 sudo sysctl -w vm.max_map_count=262144
-docker-compose up -d
 ```
+This repo helps you to create Elasticsearch and other services ralated to Elasticsearch
+
 ### Install Filebeat on client machine (Ubuntu 18.04)
 ```
 wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
