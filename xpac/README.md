@@ -1,5 +1,5 @@
 ### Creating Certificate for Xpack (Ubuntu 18.04)
-Run any of below command with in the container to create the certificate 
+Run any of below command in the Elasticsearch container to create the certificate 
 ```
 /bin/elasticsearch-certutil ca      (or)
 /bin/elasticsearch-certutil cert --ca elastic-stack-ca.p12
