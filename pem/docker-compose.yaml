@@ -23,8 +23,8 @@ services:
     stop_grace_period: 5m
     volumes:
       - esdata:/usr/share/elasticsearch/data
-      - /etc/letsencrypt/archive/XXXXXXXXX/privkey1.pem:/usr/share/elasticsearch/config/privkey1.pem
-      - /etc/letsencrypt/archive/XXXXXXXXX/fullchain1.pem:/usr/share/elasticsearch/config/fullchain1.pem
+      - /etc/letsencrypt/archive/metrics.ettrak.com/privkey1.pem:/usr/share/elasticsearch/config/privkey1.pem
+      - /etc/letsencrypt/archive/metrics.ettrak.com/fullchain1.pem:/usr/share/elasticsearch/config/fullchain1.pem
     ulimits:
       nofile:
         soft: 65536
