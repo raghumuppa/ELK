@@ -13,12 +13,18 @@ services:
       - bootstrap.memory_lock=true
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
       - xpack.security.enabled=true
+      ############################################
       - xpack.security.transport.ssl.enabled=true
       - xpack.security.transport.ssl.keystore.type=PKCS12
       - xpack.security.transport.ssl.verification_mode=certificate
       - xpack.security.transport.ssl.keystore.path=elastic-stack-ca.p12
       - xpack.security.transport.ssl.truststore.path=elastic-stack-ca.p12
       - xpack.security.transport.ssl.truststore.type=PKCS12
+      ####################################################
+      - xpack.security.http.ssl.enabled=true
+      - xpack.security.http.ssl.keystore.path=elastic-stack-ca.p12
+      - xpack.security.http.ssl.truststore.path=elastic-stack-ca.p12
+      - xpack.security.http.ssl.truststore.type=PKCS12
     ulimits:
       memlock:
         soft: -1
@@ -33,9 +39,13 @@ services:
     image: docker.elastic.co/kibana/kibana:7.4.2
     container_name: kibana
     environment:
-      ELASTICSEARCH_URL: "http://elasticsearch:9200"
-      ELASTICSEARCH_USERNAME: "kibana"
-      ELASTICSEARCH_PASSWORD: "kibana"
+      - TZ=Asia/Bahrain
+      - ELASTICSEARCH_USERNAME="elastic"
+      - ELASTICSEARCH_PASSWORD="admin@123"
+      - ELASTICSEARCH_HOSTS="https://es01:9200"
+      - SERVER_SSL_ENABLED="true"
+      - SERVER_SSL_CERTIFICATE="config/certs/crt.pem"
+      - SERVER_SSL_KEY="config/certs/key.pem"
     ports:
       - 5601:5601
     depends_on:
